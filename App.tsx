@@ -17,12 +17,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 // * Screens
-import ScanScreen from "./components/screens/ObjScreen";
+import ObjScreen from "./components/screens/ObjScreen";
 import CollectionScreen from "./components/screens/CollectionScreen";
 import PersonalScreen from "./components/screens/PersonalScreen"
 
 // *  Screen Names
-const NfcName = "Scan";
+const ObjName = "Scan";
 const CollectionName = "Collection";
 const ProfileName = "Profile";
 
@@ -34,14 +34,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName={NfcName}
+        initialRouteName={ObjName}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let rn = route.name;
 
-            if (rn === NfcName) {
-              iconName = focused ? "scan-circle" : "scan-circle-outline";
+            if (rn === ObjName) {
+              iconName = focused ? "scan" : "scan-outline";
             } else if (rn === CollectionName) {
               iconName = focused ? "library" : "library-outline";
             } else if (rn === ProfileName) {
@@ -67,8 +67,8 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name={NfcName}
-          component={ScanScreen}
+          name={ObjName}
+          component={ObjScreen}
           options={{
             headerTransparent: true,
             headerTitleAlign: "center",
@@ -91,7 +91,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  /* container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -114,5 +114,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#fff",
-  },
+  }, */
 });
