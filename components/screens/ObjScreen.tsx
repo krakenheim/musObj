@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Platform,
+  Modal,
 } from "react-native";
 import Constants from "expo-constants";
 import { Camera, CameraType } from "expo-camera";
@@ -40,6 +41,35 @@ export default function ObjScreen() {
         );
         const [detections, setDetections] = useState<string[]>([]);
         const [net, setNet] = useState<mobilenet.MobileNet>();
+        const [modalVisible, setModalVisible] = useState(false);
+
+        const DATA = {
+          "sweet potato": {
+            image: require("../../assets/images/hjelm.jpg"),
+            title: "Hjelm fra 2. verdenskrig",
+            text: "Denne hjem er fra en falden soldat, som oprindeligt boede i Skanderborg. Under 2. verdenskrig blev soldaten sendt til vestfronten...",
+          },
+          "paper towel": {
+            image: require("../../assets/images/pilespids.jpg"),
+            title: "Pilespids fra stenalderen",
+            text: "Denne pilespids er fundet ved Rinkloster, og er brugt som pilespids til at nedlægge vildsvin",
+          },
+          "pool table": {
+            image: require("../../assets/images/perler.jpg"),
+            title: "Perler",
+            text: "Perlerne er blevet brugt til særlige begivenheder.",
+          },
+          "piggy bank": {
+            image: require("../../assets/images/perler.jpg"),
+            title: "Perler",
+            text: "Perlerne er blevet brugt til særlige begivenheder.",
+          },
+          "billiard table": {
+            image: require("../../assets/images/perler.jpg"),
+            title: "Perler",
+            text: "Perlerne er blevet brugt til særlige begivenheder.",
+          },
+        };
 
       const handleCameraStream = (images: IterableIterator<tf.Tensor3D>) => {
         const loop = async () => {
@@ -81,6 +111,7 @@ export default function ObjScreen() {
       if (!net) {
         return <Text style={styles.loading}>Loading Data</Text>;
       }
+      
   return (
     <View style={styles.container}>
       <TensorCamera

@@ -47,8 +47,7 @@ export default function PersonalScreen() {
           </View>
         </View>
         <Text style={styles.bioText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          1.0.0
         </Text>
       </View>
       <Modal animationType="slide" transparent={false} visible={modalVisible}>
