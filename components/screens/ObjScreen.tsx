@@ -111,7 +111,7 @@ export default function ObjScreen() {
       if (!net) {
         return <Text style={styles.loading}>Loading Data</Text>;
       }
-      
+
   return (
     <View style={styles.container}>
       <TensorCamera
@@ -126,11 +126,11 @@ export default function ObjScreen() {
         resizeDepth={3}
         autorender={true}
       />
-      <View style={styles.text}>
+      {/* <View style={styles.text}>
         {detections.map((detection, index) => (
           <Text key={index}>{detection}</Text>
         ))}
-      </View>
+      </View> */}
     </View>
   );
 }
