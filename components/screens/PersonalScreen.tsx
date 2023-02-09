@@ -47,7 +47,7 @@ export default function PersonalScreen() {
           </View>
         </View>
         <Text style={styles.bioText}>
-          1.0.0
+          1.0.1
         </Text>
       </View>
       <Modal animationType="slide" transparent={false} visible={modalVisible}>
