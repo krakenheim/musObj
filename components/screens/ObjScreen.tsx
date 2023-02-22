@@ -51,7 +51,7 @@ export default function ObjScreen() {
       title: "Hjelm fra 2. verdenskrig",
       text: "Denne hjem er fra en falden soldat, som oprindeligt boede i Skanderborg. Under 2. verdenskrig blev soldaten sendt til vestfronten...",
     },
-    "paper towel": {
+    "computer keyboard, keypad": {
       image: require("../../assets/images/pilespids.jpg"),
       title: "Pilespids fra stenalderen",
       text: "Denne pilespids er fundet ved Rinkloster, og er brugt som pilespids til at nedlægge vildsvin",
@@ -136,7 +136,7 @@ console.log(detections[1]);
 
   useEffect(() => {
     /* console.log("i run") */
-    if (detections[1] === "remote control, remote") {
+    if (detections[1] === "remote control, remote" || "computer keyboard, keypad") {
       console.log("i got in here");
       setActiveModal(detections[1])
       console.log(activeModal);
