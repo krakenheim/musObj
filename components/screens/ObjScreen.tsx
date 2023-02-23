@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Text,
   View,
@@ -43,8 +43,6 @@ export default function ObjScreen() {
   const [activeModal, setActiveModal] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  
-
   const DATA = {
     "remote control, remote": {
       image: require("../../assets/images/hjelm.jpg"),
@@ -78,36 +76,36 @@ export default function ObjScreen() {
   const closeModal = () => {
     setModalVisible(false);
     setActiveModal(null);
-  }
+  };
 
   const handleCameraStream = (images: IterableIterator<tf.Tensor3D>) => {
     if (looking === true) {
-    const loop = async () => {
-      if (net) {
-        if (frame % computeRecognitionEveryNFrames === 0) {
-          const nextImageTensor = images.next().value;
-          if (nextImageTensor) {
-            const objects = await net.classify(nextImageTensor);
-            if (objects && objects.length > 0) {
-              setDetections(objects.map((object) => object.className));
-            }
-           
-            tf.dispose([nextImageTensor]);
-          }
-        }
-        frame += 1;
-        frame = frame % computeRecognitionEveryNFrames;
-      }
+      const loop = async () => {
+        if (net) {
+          if (frame % computeRecognitionEveryNFrames === 0) {
+            const nextImageTensor = images.next().value;
+            if (nextImageTensor) {
+              const objects = await net.classify(nextImageTensor);
+              if (objects && objects.length > 0) {
+                setDetections(objects.map((object) => object.className));
+              }
 
-      requestAnimationFrame(loop);
-    };
-    loop();
+              tf.dispose([nextImageTensor]);
+            }
+          }
+          frame += 1;
+          frame = frame % computeRecognitionEveryNFrames;
+        }
+
+        requestAnimationFrame(loop);
+      };
+      loop();
     } else {
-      return console.log("waiting")
+      return console.log("waiting");
     }
   };
 
- /*  const handleDetections = (detection) => {
+  /*  const handleDetections = (detection) => {
     return detection.map((detection) => {
       const data = DATA[detection];
       if (data) {
@@ -116,12 +114,6 @@ export default function ObjScreen() {
       return null;
     });
   }; */
- 
-  
-
-  
-
-
 
   useEffect(() => {
     (async () => {
@@ -132,19 +124,23 @@ export default function ObjScreen() {
     })();
   }, []);
 
-console.log(detections[1]);
+  console.log(detections[1]);
 
   useEffect(() => {
     /* console.log("i run") */
-    if (detections[1] === "remote control, remote" || "computer keyboard, keypad") {
-      console.log("i got in here");
-      setActiveModal(detections[1])
-      console.log(activeModal);
-      setModalVisible(true);
+    if (
+      detections[1] === "remote control, remote" ||
+      "computer keyboard, keypad"
+    ) {
+      if (modalVisible == false) {
+        console.log("i got in here");
+        setActiveModal(detections[1]);
+        console.log(activeModal);
+        setModalVisible(true);
+      } else {
+      }
     }
-  }, [detections])
-
-  
+  }, [detections]);
 
   if (hasPermission === null) {
     return <View />;
