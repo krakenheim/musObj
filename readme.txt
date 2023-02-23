@@ -5,6 +5,8 @@ If there is an error occuring with when updating the build on android, this shou
       "policy": "appVersion"
     }
 
+Before testing on EXPO go, the runtimeversion should be set to "sdkVersion"
+
 
     Eas.json file has been updated to ease the update flow. 
     Hvis is the old code, in case that the build will not finish. Then this should help:
