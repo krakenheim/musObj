@@ -7,6 +7,7 @@ import {
   Image,
   Platform,
   Modal,
+  Alert,
 } from "react-native";
 import Constants from "expo-constants";
 import { Camera, CameraType } from "expo-camera";
@@ -33,7 +34,9 @@ const textureDims =
       };
 
 let frame = 0;
-const computeRecognitionEveryNFrames = 120;
+
+/* Sets how often it detects items */
+const computeRecognitionEveryNFrames = 200;
 
 export default function ObjScreen() {
   const [hasPermission, setHasPermission] = useState<null | boolean>(null);
@@ -124,21 +127,27 @@ export default function ObjScreen() {
     })();
   }, []);
 
-  console.log(detections[1]);
+  /* console.log(detections[1]); */
 
   useEffect(() => {
+    const item = detections[1];
+    console.log(item);
+
     /* console.log("i run") */
     if (
-      detections[1] === "remote control, remote" ||
-      "computer keyboard, keypad"
+      item === "remote control, remote" ||
+      "computer keyboard, keypad" ||
+      "pool table" ||
+      "piggy bank" ||
+      "billiard table"
     ) {
-      if (modalVisible == false) {
+      /* Alert.alert("Found Something"); */
+      /* if (modalVisible == false) {
         console.log("i got in here");
         setActiveModal(detections[1]);
         console.log(activeModal);
         setModalVisible(true);
-      } else {
-      }
+      } */
     }
   }, [detections]);
 
