@@ -34,21 +34,19 @@ export default function PersonalScreen() {
         <Text style={styles.nameText}>Mig</Text>
         <View style={styles.stats}>
           <View style={styles.stat}>
-            <Text style={styles.statLabel}>Followers</Text>
-            <Text style={styles.statValue}>5,345</Text>
+            <Text style={styles.statLabel}>Visited</Text>
+            <Text style={styles.statValue}>12</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text style={styles.statLabel}>Collected</Text>
+            <Text style={styles.statValue}>34</Text>
           </View>
           <View style={styles.stat}>
             <Text style={styles.statLabel}>Following</Text>
-            <Text style={styles.statValue}>345</Text>
-          </View>
-          <View style={styles.stat}>
-            <Text style={styles.statLabel}>Likes</Text>
-            <Text style={styles.statValue}>34,567</Text>
+            <Text style={styles.statValue}>4</Text>
           </View>
         </View>
-        <Text style={styles.bioText}>
-          1.0.4
-        </Text>
+        <Text style={styles.bioText}></Text>
       </View>
       <Modal animationType="slide" transparent={false} visible={modalVisible}>
         <View style={styles.modalContainer}>
@@ -147,6 +145,7 @@ const styles = StyleSheet.create({
   },
   stat: {
     alignItems: "center",
+    padding: 20,
   },
   statLabel: {
     fontSize: 16,
